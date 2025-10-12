@@ -1,0 +1,22 @@
+# Mail Organizer Requirements
+# Core dependencies for the Mail Organizer application
+
+# No external dependencies required for basic functionality
+# The application uses only Python standard library modules:
+# - tkinter (for GUI)
+# - subprocess (for AppleScript execution)
+# - re (for regex patterns)
+# - json (for configuration)
+# - pathlib (for file operations)
+# - threading (for background operations)
+# - logging (for logging)
+# - webbrowser (for opening unsubscribe links)
+# - urllib.parse (for URL parsing)
+# - datetime (for timestamps)
+
+# Optional dependencies for enhanced functionality:
+# - osascript (if you want to use the osascript Python package instead of subprocess)
+#   pip install osascript
+
+# Note: This application is designed to work with macOS and Apple Mail
+# It requires AppleScript support and Mail.app to be installed

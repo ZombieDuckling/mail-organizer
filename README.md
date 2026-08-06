@@ -97,6 +97,15 @@ mail-organizer/
 3. **No external dependencies** required (uses only Python standard library)
 4. **Ensure Apple Mail** is installed and accessible
 
+## ✅ Development Checks
+
+```bash
+python3 -m compileall -q core config utils tests
+python3 -m pytest tests/ -q
+```
+
+The test suite covers pure parsing and safety logic only; it does not launch Mail.app or execute AppleScript.
+
 ## 📋 Usage Examples
 
 ### Command Line Interface

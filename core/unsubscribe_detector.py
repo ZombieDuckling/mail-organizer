@@ -102,14 +102,17 @@ class UnsubscribeDetector:
         cleaned_links = []
         
         for link in unique_links:
-            # Clean up the link
-            link = link.strip()
-            if link.startswith('"') and link.endswith('"'):
-                link = link[1:-1]
-            if link.startswith("'") and link.endswith("'"):
-                link = link[1:-1]
+            # Clean up links from both captured href values and full regex matches.
+            # Full URL patterns can include surrounding HTML because they stop only
+            # at whitespace, so trim common HTML/quote delimiters before validation.
+            link = link.strip().strip('"\'')
+            link = re.split(r'["\'<>]', link, maxsplit=1)[0].strip()
             
-            if link and self.is_safe_unsubscribe_url(link):
+            if (
+                link
+                and self.is_safe_unsubscribe_url(link)
+                and link not in cleaned_links
+            ):
                 cleaned_links.append(link)
         
         return cleaned_links
